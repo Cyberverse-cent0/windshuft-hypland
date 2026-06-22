@@ -1,0 +1,107 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["custom/menu", "hyprland/workspaces"],
+    "modules-center": ["clock", "cpu", "memory", "temperature"],
+    "modules-right": ["tray", "pulseaudio", "network", "custom/playerctl", "custom/weather"],
+    
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+    
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "format": {
+                "months": "<span color='#ecc6d9'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffccff'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "cpu": {
+        "format": "CPU {}%",
+        "interval": 2,
+        "tooltip": true
+    },
+    
+    "memory": {
+        "format": "MEM {}%",
+        "interval": 2,
+        "tooltip": true
+    },
+    
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": "TEMP {temperatureC}°C",
+        "format": "TEMP {temperatureC}°C",
+        "interval": 5
+    },
+    
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "MUTED",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    
+    "network": {
+        "format-wifi": "NET {signalStrength}%",
+        "format-ethernet": "NET {ipaddr}",
+        "format-disconnected": "DISCONNECTED",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+    
+    "custom/playerctl": {
+        "exec": "$HOME/dotfiles/waybar/scipts/playerctl.sh",
+        "format": "{}",
+        "interval": 2,
+        "on-click": "playerctl play-pause"
+    },
+    
+    "custom/weather": {
+        "exec": "$HOME/dotfiles/waybar/scipts/weather.sh",
+        "format": "{}",
+        "interval": 3600,
+        "tooltip": true
+    },
+    
+    "custom/menu": {
+        "format": "MENU",
+        "on-click": "wofi --show drun"
+    }
+}

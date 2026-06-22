@@ -1,0 +1,193 @@
+@define-color highlight rgba(117, 241, 250, 0.7);
+@define-color dark-9 rgba(24, 24, 27, 0.7);
+@define-color dark-8 rgba(39, 39, 42, 0.7);
+@define-color dark-7 rgba(63, 63, 70, 0.7);
+@define-color dark-6 rgba(82, 82, 91, 0.7);
+@define-color dark-5 rgba(113, 113, 122, 0.7);
+
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: JetBrainsMono Nerd Font Propo;
+  font-size: 16px;
+}
+
+window#waybar {
+  background-color: @dark-9;
+  color: white;
+}
+
+#workspaces button {
+  padding: 3px;
+  margin: 7px 0px 7px 7px;
+  background: transparent;
+  border-radius: 2px;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: @dark-7;
+}
+
+#workspaces button.active {
+  background: @highlight;
+  color: black;
+  font-weight: 700;
+}
+
+#submap,
+#battery,
+#bluetooth,
+#network,
+#cpu,
+#memory,
+#disk,
+#volume {
+  border-radius: 8px;
+  padding: 5px 8px;
+  background: @dark-8;
+  margin: 5px 10px 5px 0px;
+  transition: all 0.3s ease;
+}
+
+#submap,
+#workspaces button.urgent {
+  background: rgba(227, 81, 73, 1);
+  color: black;
+}
+
+#battery.warning {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+#battery.critical {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+#memory.warning {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+#memory.critical {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+#disk.warning {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+#disk.critical {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+
+#pulseaudio-slider {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 8px;
+}
+
+#pulseaudio-slider slider {
+  all: unset;
+  min-height: 0;
+  min-width: 0;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+  min-height: 8px;
+  min-width: 75px;
+  border-radius: 5px;
+  background: @dark-7;
+}
+
+#pulseaudio-slider highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background: @highlight;
+}
+
+#media {
+  color: #42ff9f;
+  margin: 7px 0px 7px 80px;
+}
+
+#custom-media-animation {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+#custom-media-now-playing {
+  margin-right: 10px;
+}
+
+#custom-media-time {
+  color: @dark-5;
+  font-size: 14px;
+}
+
+tooltip {
+  background: @dark-8;
+  border-radius: 8px;
+  border: 1px solid @dark-6;
+}
+
+tooltip label {
+  color: white;
+  padding: 4px;
+}
+
+/* Network signal strength indicator */
+
+#network.wifi-high {
+  color: #4ade80;
+}
+
+#network.wifi-medium {
+  color: #fbbf24;
+}
+
+#network.wifi-low {
+  color: #ef4444;
+}
+
+/* Bluetooth connected indicator */
+#bluetooth.connected {
+  color: #4ade80;
+}
+
+#bluetooth.disconnected {
+  color: @dark-5;
+}
+
+/* Hover effects for all modules */
+#submap:hover,
+#battery:hover,
+#bluetooth:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#volume:hover {
+  background: @dark-7;
+}
+
+/* Media section enhancements */
+#media {
+  color: #42ff9f;
+  margin: 7px 0px 7px 80px;
+}
+
+#custom-media-animation {
+  font-size: 13px;
+  margin-right: 10px;
+}

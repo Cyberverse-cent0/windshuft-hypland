@@ -1,0 +1,18 @@
+{
+    "custom/playerctl": {
+        "exec": "$HOME/dotfiles/waybar/scipts/playerctl.sh",
+        "format": "{}",
+        "interval": 2,
+        "on-click": "playerctl play-pause"
+    },
+    "custom/weather": {
+        "exec": "$HOME/dotfiles/waybar/scipts/weather.sh",
+        "format": "{}",
+        "interval": 3600,
+        "tooltip": true
+    },
+    "custom/menu": {
+        "format": "MENU",
+        "on-click": "wofi --show drun"
+    }
+}

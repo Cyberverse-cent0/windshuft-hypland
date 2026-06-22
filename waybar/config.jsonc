@@ -1,0 +1,127 @@
+{
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces"],
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{name}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10"
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": []
+        }
+    },
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/submap", "group/volume", "custom/audio-status", "battery", "bluetooth", "network", "cpu", "memory"],
+    "hyprland/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "interval": 60,
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+        },
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "bluetooth": {
+      "format": "󰂯",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂯 {num_connections}",
+      "format-connected-battery": "{device_battery_percentage}% {icon}",
+      "format-icons": {
+        "default": ["󰂯", "󰂱", "󰂲", "󰂳", "󰂴", "󰂵", "󰂶", "󰂷", "󰂸", "󰂹", "󰂺"]
+      },
+      "tooltip-format": "{controller_alias}\t{controller_address}",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+      "on-click": "exec ghostty --title=bluetui -e bluetui"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "󰻠 {}%",
+        "max-length": 10,
+        "on-click": "exec ghostty --title=btop -e btop"
+    },
+    "memory": {
+        "interval": 30,
+        "format": "󰓓 {percentage}%",
+        "format-bar": "[{bar}]",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip-format": "{used:0.1f}G/{total:0.1f}G used\n{percentage}%",
+        "on-click": "exec ghostty --title=htop -e htop"
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "󰖩 {signalStrength}%",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-disconnected": "�",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}\nFrequency: {frequency}MHz",
+        "tooltip-format-ethernet": "{ifname}\nIP: {ipaddr}\nSpeed: {bandwidthTotalBits}bps",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "exec nm-connection-editor"
+    },
+    "clock": {
+      "format": "󰃭 {:%a, %d. %b %I:%M %p}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "format": {
+          "today": "<span color='#75f1fa'><b>{}</b></span>"
+        }
+      },
+      "on-click": "exec chromium --app=https://calendar.google.com",
+      "on-click-right": "exec gnome-control-center datetime",
+      "on-click-middle": "exec zenity --calendar --text='Add Appointment' --date-format='%Y-%m-%d'"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 1,
+        "ignored-sinks": ["Easy Effects Sink"],
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "group/volume": {
+      "orientation": "horizontal",
+      "modules": [
+        "pulseaudio",
+        "pulseaudio/slider"
+      ]
+    },
+    "custom/audio-status": {
+        "exec": "~/.config/waybar/custom_modules/audio/audio-status.sh",
+        "interval": 1,
+        "tooltip": false,
+        "on-click": "playerctl play-pause"
+    }
+}
